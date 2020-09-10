@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import com.example.comunicacionhttp_istic.ConsultaDatos.Companion.consultarDatos
 import org.json.JSONArray
 import java.io.IOException
 import java.io.InputStream
@@ -32,7 +33,7 @@ class ListadoPaises : AppCompatActivity() {
             // Log.d(pais.getString("name") ,pais.toString(0) )
             Log.d("pais listado", pais.getString("name") )
             arrayDenombreDePaises.add( pais.getString("name"))
-            arrayDeobjetosDePaises.add(Pais( pais.getString("name"), pais.getString("region")))
+            arrayDeobjetosDePaises.add(Pais( pais.getString("name"), pais.getString("region"),pais.getString("flag")))
         }
         val adaptadorSimple=AdaptadorLsvSimple(this,arrayDeobjetosDePaises)
         lsvPaises.adapter=adaptadorSimple
@@ -41,30 +42,5 @@ class ListadoPaises : AppCompatActivity() {
        //lsvPaises.adapter=adaptador
 
     }
-    @Throws(IOException::class)
-    private fun consultarDatos(url:String):String{
-        val policy= StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-        var datosDescargados: InputStream?=null
-        try{
-            val direccionWEB= URL(url)
-            val conexion=direccionWEB.openConnection() as HttpURLConnection
-            conexion.requestMethod="GET"
-            conexion.connect()
-            datosDescargados=conexion.inputStream
-            return datosDescargados.bufferedReader().use{
-                it.readText()
-            }
-        }catch (e: IOException)
-        {
-            Toast.makeText(this,"${e.message}", Toast.LENGTH_SHORT).show()
-        }
-        finally {
-            if(datosDescargados!=null)
-            {
-                datosDescargados.close()
-            }
-        }
-        return "NADA"
-    }
+
 }

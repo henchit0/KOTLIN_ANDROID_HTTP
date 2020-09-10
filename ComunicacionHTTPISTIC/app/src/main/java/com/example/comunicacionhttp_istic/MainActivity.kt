@@ -8,6 +8,7 @@ import android.os.StrictMode
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import com.example.comunicacionhttp_istic.ConsultaDatos.Companion.consultarDatos
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val btnVerificar=findViewById<Button>(  R.id.btnVerificar)
         val btnConsultaSimple=findViewById<Button>(  R.id.btnConsultaSimple)
         val btnIrListado=findViewById<Button>(  R.id.btnIrListado)
+
         btnIrListado.setOnClickListener{
             val intento1 = Intent(this, ListadoPaises::class.java)
             startActivity(intento1)
@@ -84,30 +86,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    @Throws(IOException::class)
-    private fun consultarDatos(url:String):String{
-        val policy=StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-        var datosDescargados: InputStream?=null
-        try{
-            val direccionWEB= URL(url)
-            val conexion=direccionWEB.openConnection() as HttpURLConnection
-            conexion.requestMethod="GET"
-            conexion.connect()
-            datosDescargados=conexion.inputStream
-            return datosDescargados.bufferedReader().use{
-                it.readText()
-            }
-        }catch (e:IOException)
-        {
-            Toast.makeText(this,"${e.message}",Toast.LENGTH_SHORT).show()
-        }
-        finally {
-            if(datosDescargados!=null)
-            {
-                datosDescargados.close()
-            }
-        }
-        return "NADA"
-    }
+
 }
