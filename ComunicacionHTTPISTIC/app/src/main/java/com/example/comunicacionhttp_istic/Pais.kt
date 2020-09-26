@@ -2,13 +2,17 @@ package com.example.comunicacionhttp_istic
 
 import android.media.Image
 
-class Pais(nombre:String, region: String,bandera: String) {
-    var nombre=""
-    var region=""
-    var bandera=""
+class Pais(name:String, capital: String,timezones: String,flag: String) {
+
+    var name = ""
+    var capital = ""
+    var timezones = ""
+    var flag = ""
+
     init{
-        this.nombre=nombre
-        this.region=region
-        this.bandera=bandera
+        this.name = name
+        this.capital = capital
+        this.timezones = timezones
+        this.flag = flag
     }
 }

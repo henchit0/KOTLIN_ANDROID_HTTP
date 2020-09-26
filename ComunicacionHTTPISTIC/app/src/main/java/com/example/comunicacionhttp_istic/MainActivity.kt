@@ -22,9 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         val btnVerificar=findViewById<Button>(  R.id.btnVerificar)
         val btnConsultaSimple=findViewById<Button>(  R.id.btnConsultaSimple)
         val btnIrListado=findViewById<Button>(  R.id.btnIrListado)
@@ -33,9 +30,6 @@ class MainActivity : AppCompatActivity() {
             val intento1 = Intent(this, ListadoPaises::class.java)
             startActivity(intento1)
         }
-
-
-
         btnVerificar.setOnClickListener{
             if (ControlDeConexion.hayConexion(this))
             {
@@ -47,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         btnConsultaSimple.setOnClickListener{
-            val datos=consultarDatos("https://api.mocki.io/v1/0b4979ea")
+            val datos=consultarDatos("https://restcountries.eu/data/afg.svg")
            // http://jsonviewer.stack.hu/
            /*
            https://restcountries.eu/rest/v2/
@@ -61,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             {
                 var pais= datosArrayJson.getJSONObject(i)
                // Log.d(pais.getString("name") ,pais.toString(0) )
-                Log.d("pais", pais.getString("first_name") )
+                Log.d("pais", pais.getString("first_name"))
             }
 
         }

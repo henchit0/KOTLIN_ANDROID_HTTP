@@ -29,7 +29,7 @@ class ConsultaDatos
                 }
             }catch (e: IOException)
             {
-
+                //Toast.makeText(this,"${e.message}", Toast.LENGTH_SHORT).show()
             }
             finally {
                 if(datosDescargados!=null)

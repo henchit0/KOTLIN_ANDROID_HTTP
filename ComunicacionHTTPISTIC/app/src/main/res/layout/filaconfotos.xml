@@ -4,15 +4,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/imgBandera"
-            android:layout_width="134dp"
-            android:layout_height="192dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,16 +17,28 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtNombre"
+                android:id="@+id/txtNombrePais"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre" />
+                android:text="NombrePais" />
 
             <TextView
-                android:id="@+id/txtRegion"
+                android:id="@+id/txtCapital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Region" />
+                android:text="Capital" />
+
+            <TextView
+                android:id="@+id/txtTimezone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Timezone" />
+
+            <ImageView
+                android:id="@+id/imgBandera"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
         </LinearLayout>
 
     </LinearLayout>
